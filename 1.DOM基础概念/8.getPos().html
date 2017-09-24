@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            padding: 40px 50px;
+        }
+        #div1{
+            background-color: red;
+            position: relative;
+        }
+        #div2{
+            background-color: green;
+            position: relative;
+        }
+        #div3{
+            background-color: orange;
+        }
+    </style>
+    <script src="../MyFunctionBox.js"></script>
+    <script>
+        window.onload = function(){
+             var oDiv3 = document.getElementById('div3');
+             alert(getPos(oDiv3).top);
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+        </div>
+    </div>
+</div>
+</body>
+</html>

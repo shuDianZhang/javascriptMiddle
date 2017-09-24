@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*
+            第一种事件绑定形式的取消
+         */
+        function fn1(){
+            alert(1);
+        }
+        function fn2(){
+            alert(2);
+        }
+
+        document.onclick = fn1;
+        document.onclick = null;    //取消
+
+        /*
+            ie ：  obj.dettachEvent(事件名称，事件函数);
+           标准：  obj.removeEventListener('click',fn1,false);
+         */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

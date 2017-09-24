@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: rosybrown;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+    <script>
+        /*
+            不是所有的元素都能够接收键盘事件，能够响应用户输入的元素，能够接受焦点的元素就能够接收键盘事件
+           onkeydown :  当键盘按下的时候触发; 如果按下不抬起，就会连续触发
+           onkeyup :  当键盘抬起的时候触发
+
+           event.keyCode : 数字类型 键盘按键的值  键值
+                ctrlKey, shiftKey, altKey 布尔值
+                当一个事件发生的时候，如果 ctrl || shift || alt是按下的状态，返回true，否则返回falsle
+
+
+         */
+        window.onload  = function(){
+            var oDiv = document.getElementById('div1');
+            document.onkeydown = function(ev){
+                var ev = ev||event;
+
+               switch (ev.keyCode){
+                   case 37:
+                       oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+                       break;
+                   case 38:
+                       oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+                       break;
+                   case 39:
+                       oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+                       break;
+                   case 40:
+                       oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+                       break;
+               }
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

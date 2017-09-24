@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            padding: 40px 50px;
+        }
+        #div1{
+            background-color: red;
+         }
+        #div2{
+            background-color: green;
+        }
+        #div3{
+            background-color: orange;
+        }
+    </style>
+    <script>
+        /*
+        元素.offsettParent      离当前元素最近的一个有定位属性的父节点
+                                如果没有定位父级，默认是body
+                                IE7以下，如果当前元素没有定位，默认是body，如果有定位则是html
+                                IE7以下，如果当前元素的某个父级触发了layout,那么offsetParent就会被指向到这个触发了layout的父节点
+
+         layout 检测是否触发hasLayout属性
+         alert(document.getElementById('div2').currentStyle.hasLayout);   触发 true  非触发 false
+         */
+
+
+        window.onload = function(){
+            var oDiv3 = document.getElementById('div3');
+            alert(oDiv3.offsetParent.id);
+            alert(oDiv3.offsetParent.tagName);
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+     <div id="div2">
+         <div id="div3">
+         </div>
+     </div>
+ </div>
+</body>
+</html>

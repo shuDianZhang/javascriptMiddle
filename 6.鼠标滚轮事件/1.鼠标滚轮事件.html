@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        /*
+           ie/chrome :  onmousewheel
+                  event.wheelDelta
+                     上 ： 120
+                     下 ： -120
+            firefox  :  DOMMouseScroll 必须用 addEventListener
+                  event.detail
+                       上：-3
+                       下：3
+
+            阻止浏览器默认行为的两种方式：
+             return false     阻止的是  obj.on事件名称  = fn 所触发的默认行为
+                              阻止的是 attachEvent绑定的事件
+             addEventListener 绑定的事件需要通过event下面的event.prevetDefault()来阻止浏览器默认事件
+
+         */
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+
+
+
+            function fn(ev){
+                var b = true;
+                if(ev.wheelDelta){
+                    b=ev.wheelDelta>0?true:false;
+                    if(b){
+                        this.style.height = this.offsetHeight - 10 + 'px';
+                    }else{
+                        this.style.height = this.offsetHeight + 10 + 'px';
+                    }
+                }else{
+                    b=ev.detail<0?true:false;
+                    if(b){
+                        this.style.height = this.offsetHeight - 10 + 'px';
+                    }else{
+                        this.style.height = this.offsetHeight + 10 + 'px';
+                    }
+                }
+                return false;
+            }
+
+
+            oDiv.onmousewheel = fn;
+            if(oDiv.addEventListener){
+                oDiv.addEventListener('DOMMouseScroll',fn,false);
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <div id="div1"></div>
+</div>
+</body>
+</html>

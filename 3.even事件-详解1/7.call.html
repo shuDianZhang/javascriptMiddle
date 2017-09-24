@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+            call 函数下的一个方法 , call方法的第一个参数改变函数执行过程中的内部this的指向（当值为 null 的时候，就是原本this的指向）
+                                              第二个参数就是原来函数的参数列表
+         */
+
+        function fn1(a,b){
+            alert(this);
+            alert(a+b);
+        }
+        fn1.call(1,10,20);          //调用函数    fn1() == fn1.call()
+
+        function bind(obj,evname,fn){
+            if(obj.addEventListener){
+                obj.addEventListener(evname,fn,false);
+            }else{
+                obj.attachEvent('on'+evname, function () {
+                    fn.call(obj);
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*
+         元素.firstChild : 只读 属性 第一个子节点
+                标准下： firstChild会包含文本类型的节点
+                非标准下：只包含元素节点
+         元素.firstElementChild : 只读 属性
+                标准下获取第一个元素类型的子节点
+                非标准下不支持这个属性
+
+         元素.lastChild : 只读 属性 第一个子节点
+                标准下： lastChild会包含文本类型的节点
+                非标准下：只包含元素节点
+         元素.lastElementChild : 只读 属性
+                标准下获取第一个元素类型的子节点
+                非标准下不支持这个属性
+
+          元素.nextSibling 下一个兄弟节点
+          元素.nextElementSibling
+
+          元素.previousSibling 上一个兄弟节点
+          元素.previousElementSibling
+         */
+        window.onload = function () {
+            var oUl = document.getElementById('ul1');
+            var oFirst = oUl.firstElementChild || oUl.firstChild ;
+            var oLast = oUl.lastElementChild || oUl.lastChild ;
+            var oSiNext = oFirst.nextElementSibling || oFirst.nextSibling;
+            var oSiPrev = oLast.previousElementSibling || oFirst.previousSibling;
+            if(oUl.children[0]){
+                oFirst.style.background = 'red';
+            }else{
+                alert('没有可以设置的子节点');
+            }
+            oLast.style.background = 'yellow';
+            oSiNext.style.backgroundColor = 'blue';
+            oSiPrev.style.backgroundColor = 'orange';
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1" style="border: 1px solid black">
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+    <li>44444</li>
+    <li>55555</li>
+</ul>
+</body>
+</html>

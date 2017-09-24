@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    /*
+    BOM : Broser Object Model 浏览器对象模型
+     */
+    window.onload = function(){
+        var aInput = document.getElementsByTagName('input');
+        var newOpen = null;
+        /*
+             window.open(页面地址url,打开的方式) 方法 打开一个新的窗口（页面）
+                        如果url为空，则默认打开空白页面
+                        如果打开方式为空，默认为新窗口方式打开
+
+             返回值： 返回新打开的窗口的window对象
+
+                        close() 方法 关闭窗口
+                         1. ff 默认无法关闭
+                         2. chrome 默认直接关闭
+                         3. ie 询问用户
+
+         */
+        aInput[0].onclick = function(){
+          //  window.open('http://www.baidu.com','_self');
+            newOpen = open();
+            newOpen.document.body.style.backgroundColor = 'red';
+        }
+        aInput[1].onclick = function(){
+            newOpen.close();
+        }
+    }
+</script>
+<body>
+   <input type="button" value="New Window">
+   <input type="button" value="Close Window">
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../MyFunctionBox.js"></script>
+    <script>
+        window.onload = function(){
+              var aInp = document.getElementsByTagName('input');
+             aInp[0].value = getCookie('username');
+             aInp[1].value = getCookie('password');
+              aInp[2].addEventListener('click',function(){
+                  alert(1);
+                  var count = aInp[0].value;
+                  var password = aInp[1].value;
+                  setCookie('username',count,10);
+                  setCookie('password',password,10);
+              },false);
+        }
+    </script>
+</head>
+<br>用户名：
+<input  type="text"/></br>
+密码：
+<input  type="text"/></br>
+<input type="button" value="登录" />
+</body>
+</html>

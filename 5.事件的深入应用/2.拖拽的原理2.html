@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        /*
+         三个鼠标事件
+         1.onmousedown
+         2.onmousemove
+         3.onmouseup
+
+         1. 拖拽的时候，如果有文字或者图片被选中，会产生问题
+               原因 ：当鼠标按下的时候，如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果。
+               解决： 标准下： 使用return false；阻止浏览器默认行为
+                      非标准下：设置全局捕获
+
+              拖拽图片会有问题，原因，解决的办法同上
+         */
+        window.onload = function(){
+
+            var oDiv = document.getElementById('div1');
+            oDiv.onmousedown = function(ev){
+                var ev = ev || event;
+                var disX =  ev.clientX - this.offsetLeft ;
+                var disY =  ev.clientY - this.offsetTop ;
+               if( oDiv.setCapture){
+                   oDiv.setCapture();
+               }
+                document.onmousemove = function(ev){
+                    var ev = ev || event;
+                    oDiv.style.left = ev.clientX  - disX  + 'px';
+                    oDiv.style.top = ev.clientY  - disY + 'px';
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = document.onmousedown= null;
+                    if(oDiv.releaseCapture){
+                        oDIv.releaseCapture();
+                    }
+                }
+                return false;
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

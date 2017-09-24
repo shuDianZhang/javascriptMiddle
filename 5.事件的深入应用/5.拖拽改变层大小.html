@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: darkgray;
+            position: absolute;
+            left: 700px;
+            top: 300px;
+        }
+    </style>
+    <script src="../MyFunctionBox.js"></script>
+    <script>
+           window.onload = function () {
+               var oDiv = document.getElementById('div1');
+               oDiv.onmousedown = function(ev){
+                   var ev = ev||event;
+                   var b= '';
+                   if(ev.clientX > this.offsetLeft + this.offsetWidth - 10){
+                         b = 'right';
+                   }
+                   if(ev.clientX < this.offsetLeft + 10){
+                          b = 'left';
+                   }
+
+                   var disX = ev.clientX;
+                   var disW = this.offsetWidth;
+                   var disL = this.offsetLeft;
+
+                   document.onmousemove = function(ev){
+                       var ev = ev||event;
+                         switch (b){
+                             case 'right':
+                                   oDiv.style.width = disW + (ev.clientX - disX) + 'px';
+                                 break;
+                             case 'left':
+                                   oDiv.style.width = disW - (ev.clientX - disX) + 'px';
+                                   oDiv.style.left = disL + (ev.clientX - disX) + 'px';
+                                 break;
+                         }
+                   }
+
+                   document.onmouseup = function(){
+                       document.onmousedown = document.onmousemove = null;
+                   }
+
+               }
+
+           }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

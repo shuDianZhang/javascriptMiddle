@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            /*
+                  <table>标签下，浏览器会自动添加<tbody>
+
+                  属性：
+                      tHead   :   表格头
+                      tBodise :   表格正文
+                      tFoot   :   表格尾
+                         rows   :   行
+                         cells  :   列
+             */
+            var oTab = document.getElementById('tab1');
+            alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);   //获取小红的位置
+
+        }
+    </script>
+</head>
+<body>
+     <table id="tab1" width="100%" border="10px">
+         <thead>
+               <tr>
+                   <th>编号</th>
+                   <th>姓名</th>
+                   <th>性别</th>
+                   <th>删除</th>
+               </tr>
+         </thead>
+         <tbody>
+         <tr>
+             <td>1</td>
+             <td>舒健</td>
+             <td>男</td>
+             <td><a href = "javascript:;">删除</a></td>
+         </tr>
+         <tr>
+         <td>2</td>
+         <td>小红</td>
+         <td>女</td>
+         <td><a href = "javascript:;">删除</a></td>
+     </tr>
+         </tbody>
+     </table>
+</body>
+</html>

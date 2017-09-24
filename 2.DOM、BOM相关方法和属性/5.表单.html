@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload=function(){
+            var oForm = document.getElementById('form1');
+            /*
+             使用name值获取表单元素 oForm.text1  没有兼容问题
+
+             onchange : 当值发生改变并失去焦点的时候触发
+             radio:    标准下：标准下点击的时候只要值变了就会出发
+                       非标准下： 焦点离开的时候，如果值变了就会触发
+             判断元素是否被选中： aler t(oForm.sex[0].checked);       true : 被选中  false : 没有被选中
+             */
+
+            oForm.text1.onchange = function(){
+                alert(this.value);
+            }
+            oForm.sex[0].onchange = function(){
+                alert('修改性别');
+            }
+            oForm.a[0].onchange = function(){
+                alert('2');
+            }
+
+            alert(oForm.city.value);
+            oForm.city.onchange = function(){
+                alert(this.value);
+            }
+        }
+    </script>
+</head>
+<body>
+ <form id="form1">
+     <input type="text" name="text1" id="text1" value="舒健" />
+     <!--无论是单选和多选，都需要靠name值来区分分组-->
+     <input type="radio" name="sex" value="1" checked/>男
+     <input type="radio" name="sex" value="0"/>女
+     <input type="checkbox" name="a" value="html" checked/>html
+     <input type="checkbox" name="a" value="css"/>css
+     <input type="checkbox" name="a" value="javascript"/>javascript
+
+     <select name="city" value="" >
+         <option value="ggg">请选择城市</option>
+         <option value="北京">北京</option>
+         <option value="上海" selected>上海</option>
+     </select>
+
+
+ </form>
+</body>
+</html>

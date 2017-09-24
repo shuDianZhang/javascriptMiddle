@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript" src="../MyFunctionBox.js"></script>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            drag(oDiv);
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

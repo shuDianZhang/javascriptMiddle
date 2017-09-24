@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var oText = document.getElementById('text1');
+//            oText.value = '222';
+//            oText['value'] = '222';
+            /*
+            元素.getAttribute();    方法 获取指定元素的指定属性的值
+            元素.setAttribute();    方法 给指定元素的指定属性的设置值
+            元素.removeAttribute(); 方法 移除指定的元素的指定的属性
+             */
+            alert(oText.getAttribute('value'));
+            oText.setAttribute('value','修改之后');
+            oText.removeAttribute('value');
+            /*
+            1. 用.和[]的形式无法操作自定义属性
+               alert(oText._name_);   无法获取自定义属性的值
+               getAttribure可以操作元素的自定义属性
+            2.
+               alert(oImg.src);             返回的是图片存放的绝对路径，不是src的值
+               oImg.getAttribute('src');    返回的是纯粹的src的值
+          */
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="text1" value="111" _name_="舒健"/>
+
+</body>
+</html>

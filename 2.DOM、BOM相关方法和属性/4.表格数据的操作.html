@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var data = [
+                {id:1,username:"舒健",sex:"男"},
+                {id:2,username:"涂翔伟",sex:"男"},
+                {id:3,username:"曾鹏",sex:"男"},
+                {id:4,username:"谭天",sex:"男"},
+                {id:5,username:"曾卫明",sex:"男"}
+            ];
+            var oTab = document.getElementById('tab1');
+            var oTbody = oTab.tBodies[0];
+            for(var i=0 ; i<data.length; i++){
+                 var oTr = document.createElement('tr');
+                // oTr.innerHTML = '<td>'+data[i].id +'</td>'+'<td>'+data[i].username +'</td>'+'<td>'+data[i].sex +'</td>'+'<td>删除</td>';
+                var oTd = document.createElement('td');
+                oTd.innerHTML = data[i].id;
+                oTr.appendChild(oTd);
+
+                if(i%2){
+                    oTr.style.backgroundColor = 'while';
+                }else{
+                    oTr.style.backgroundColor = 'gray';
+
+                }
+                var oTd = document.createElement('td');
+                oTd.innerHTML = data[i].username;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement('td');
+                oTd.innerHTML = data[i].sex;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement('td');
+ //               oTd.innerHTML = '&nbsp';                             // &nbsp空格
+                  var oA = document.createElement('a');
+                  oA.innerHTML = '删除';
+                  oA.href = 'javascript:;';
+                  oTd.appendChild(oA);
+                  oTr.appendChild(oTd);
+
+                  oA.onclick = function(){
+//                      this.parentNode.parentNode.style.display = 'none';
+                        oTbody.removeChild(this.parentNode.parentNode);
+                  }
+
+                 oTbody.appendChild(oTr);
+            }
+        }
+    </script>
+</head>
+<body>
+<table id="tab1" width="100%" border="10px">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</body>
+</html>

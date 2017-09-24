@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*
+           元素.parentNode:  只读 属性 当前节点的父节点  单数 父节点只有一个
+                        没有什么兼容问题
+         */
+        window.onload = function(){
+            var aA = document.getElementsByTagName('a');
+            for(var i=0 ; i<aA.length ; i++){
+                aA[i].onclick = function(){
+                    this.parentNode.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li>11111<a href="javascript:;">隐藏</a></li>
+    <li>22222<a href="javascript:;">隐藏</a></li>
+    <li>33333<a href="javascript:;">隐藏</a></li>
+    <li>44444<a href="javascript:;">隐藏</a></li>
+</ul>
+</body>
+</html>

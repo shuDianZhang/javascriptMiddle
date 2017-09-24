@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的创建</title>
+    <script>
+        window.onload = function(){
+            var oText = document.getElementById('text1');
+            var oBtn  = document.getElementById('btn');
+            var oUl = document.getElementById('ul1');
+
+            oBtn.onclick = function(){
+                /*
+                  document.createElement(标签名);                创建元素
+
+                  添加到页面
+                  父级.appendChild();         在指定的父级的子节点的最后一个添加
+                  父级.insertBefore();         在指定元素前面插入一个新元素
+                                 在IE下如果第二个参数的节点不存在，会报错
+                                 在标准浏览器下如果第二个参数的节点不存在，则会以appendChild的形式进行插入
+                  父级.removeChild()        删除元素
+                 */
+                var oLi = document.createElement('li');
+                oLi.innerHTML = oText.value ;
+
+                var oA = document.createElement('a');
+                oA.setAttribute('href','javascript:;');
+                oA.innerHTML = '删除';
+                oLi.appendChild(oA);
+                if(oUl.children[0]){
+                    oUl.insertBefore(oLi,oUl.children[0]);
+                }else{
+                    oUl.appendChild(oLi);
+                }
+                oA.onclick = function(){
+                    oUl.removeChild(this.parentNode);
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="text1" />
+<input type="button" value="留言" id="btn" />
+<ul id="ul1">
+
+</ul>
+</body>
+</html>
